@@ -1,7 +1,7 @@
 using BepInEx.Configuration;
 using UnityEngine;
 
-namespace EasyRotate
+namespace DeftHands
 {
     public enum HorizontalAxis
     {

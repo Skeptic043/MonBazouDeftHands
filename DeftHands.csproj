@@ -2,8 +2,8 @@
   <PropertyGroup>
     <Configuration Condition="'$(Configuration)' == ''">Release</Configuration>
     <OutputType>Library</OutputType>
-    <AssemblyName>EasyRotate</AssemblyName>
-    <RootNamespace>EasyRotate</RootNamespace>
+    <AssemblyName>DeftHands</AssemblyName>
+    <RootNamespace>DeftHands</RootNamespace>
     <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <OutputPath>bin\$(Configuration)\</OutputPath>
     <Optimize>true</Optimize>

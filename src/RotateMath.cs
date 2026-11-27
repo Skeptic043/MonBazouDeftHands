@@ -1,6 +1,6 @@
 using System;
 
-namespace EasyRotate
+namespace DeftHands
 {
     public struct RotationStep
     {

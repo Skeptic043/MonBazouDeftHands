@@ -1,4 +1,4 @@
-using EasyRotate;
+using DeftHands;
 using System;
 
 internal static class CoreTests
@@ -9,7 +9,7 @@ internal static class CoreTests
         TestAxisSelectionAndInversion();
         TestDepthClamping();
         TestDepthEasing();
-        Console.WriteLine("All EasyRotate core tests passed.");
+        Console.WriteLine("All Deft Hands core tests passed.");
         return 0;
     }
 

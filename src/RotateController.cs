@@ -2,7 +2,7 @@ using HarmonyLib;
 using System.Reflection;
 using UnityEngine;
 
-namespace EasyRotate
+namespace DeftHands
 {
     internal sealed class RotateController
     {

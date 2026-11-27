@@ -8,15 +8,15 @@ $pluginSource = Get-Content -LiteralPath (Join-Path $PSScriptRoot 'src/Plugin.cs
 $versionMatch = [regex]::Match($pluginSource, 'public const string PluginVersion = "(\d+\.\d+\.\d+)";')
 if (!$versionMatch.Success) { throw 'Cannot read the three-part PluginVersion constant.' }
 $version = $versionMatch.Groups[1].Value
-$pluginPath = Join-Path $PSScriptRoot 'bin/Release/EasyRotate.dll'
+$pluginPath = Join-Path $PSScriptRoot 'bin/Release/DeftHands.dll'
 if (!(Test-Path -LiteralPath $pluginPath -PathType Leaf)) { throw 'Build the plugin before packaging.' }
 $identity = [Reflection.AssemblyName]::GetAssemblyName($pluginPath)
-if ($identity.Name -ne 'EasyRotate' -or $identity.Version -ne [version]"$version.0") {
-    throw "Build output identity does not match EasyRotate $version.0. Rebuild before packaging."
+if ($identity.Name -ne 'DeftHands' -or $identity.Version -ne [version]"$version.0") {
+    throw "Build output identity does not match DeftHands $version.0. Rebuild before packaging."
 }
 
 if ([string]::IsNullOrWhiteSpace($OutputPath)) {
-    $OutputPath = Join-Path $PSScriptRoot "artifacts/EasyRotate-$version.zip"
+    $OutputPath = Join-Path $PSScriptRoot "artifacts/DeftHands-$version.zip"
 } elseif (![IO.Path]::IsPathRooted($OutputPath)) {
     $OutputPath = Join-Path $PSScriptRoot $OutputPath
 }
@@ -24,9 +24,9 @@ $OutputPath = [IO.Path]::GetFullPath($OutputPath)
 if ([IO.Path]::GetExtension($OutputPath) -ne '.zip') { throw 'OutputPath must end with .zip.' }
 if (Test-Path -LiteralPath $OutputPath) { throw 'Output already exists. Choose a new OutputPath to preserve the previous package.' }
 
-$prefix = 'BepInEx/plugins/EasyRotate/'
+$prefix = 'BepInEx/plugins/DeftHands/'
 $allowlist = [ordered]@{
-    'bin/Release/EasyRotate.dll' = 'EasyRotate.dll'
+    'bin/Release/DeftHands.dll' = 'DeftHands.dll'
     'LICENSE'                    = 'LICENSE'
     'CHANGELOG.md'               = 'CHANGELOG.md'
     'README.md'                  = 'README.md'

@@ -1,14 +1,14 @@
 using BepInEx;
 using HarmonyLib;
 
-namespace EasyRotate
+namespace DeftHands
 {
     [BepInPlugin(PluginGuid, PluginName, PluginVersion)]
     public sealed class Plugin : BaseUnityPlugin
     {
-        public const string PluginGuid = "com.skeptic043.monbazou.easyrotate";
-        public const string PluginName = "Easy Rotate";
-        public const string PluginVersion = "1.0.0";
+        public const string PluginGuid = "com.skeptic043.monbazou.defthands";
+        public const string PluginName = "Deft Hands";
+        public const string PluginVersion = "1.0.1";
 
         private Harmony harmony;
         private RotateController controller;

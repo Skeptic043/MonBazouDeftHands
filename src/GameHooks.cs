@@ -3,7 +3,7 @@ using CMF;
 using HarmonyLib;
 using System.Reflection;
 
-namespace EasyRotate
+namespace DeftHands
 {
     internal static class GameHooks
     {

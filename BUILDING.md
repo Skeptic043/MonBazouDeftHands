@@ -1,4 +1,4 @@
-# Building Easy Rotate
+# Building Deft Hands
 
 ## Requirements
 
@@ -16,7 +16,7 @@ From the repository folder:
 powershell -ExecutionPolicy Bypass -File .\Build.ps1
 ```
 
-Override default paths with `-GameManagedPath`, `-BepInExPath`, or `-HarmonyPath` when needed. The output is `bin/Release/EasyRotate.dll`.
+Override default paths with `-GameManagedPath`, `-BepInExPath`, or `-HarmonyPath` when needed. The output is `bin/Release/DeftHands.dll`.
 
 ## Test
 
@@ -32,4 +32,4 @@ Runs the offline unit tests for item-control eligibility, axis selection and inv
 powershell -ExecutionPolicy Bypass -File .\Package.ps1
 ```
 
-Writes `artifacts/EasyRotate-<version>.zip` with `BepInEx/plugins/EasyRotate/EasyRotate.dll`, `README.md`, `CHANGELOG.md`, and `LICENSE`, then verifies a clean extraction against the built files.
+Writes `artifacts/DeftHands-<version>.zip` with `BepInEx/plugins/DeftHands/DeftHands.dll`, `README.md`, `CHANGELOG.md`, and `LICENSE`, then verifies a clean extraction against the built files.

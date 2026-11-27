@@ -8,7 +8,7 @@ $ErrorActionPreference = 'Stop'
 $outputDirectory = Join-Path $PSScriptRoot 'bin/Release'
 $buildDirectory = Join-Path $PSScriptRoot '.local/build'
 New-Item -ItemType Directory -Force $outputDirectory, $buildDirectory | Out-Null
-$output = Join-Path $outputDirectory 'EasyRotate.dll'
+$output = Join-Path $outputDirectory 'DeftHands.dll'
 if (Test-Path -LiteralPath $output) { Remove-Item -LiteralPath $output }
 $references = @($BepInExPath, $HarmonyPath)
 $references += @('Assembly-CSharp.dll', 'UnityEngine.dll', 'UnityEngine.CoreModule.dll', 'UnityEngine.InputLegacyModule.dll', 'netstandard.dll') | ForEach-Object { Join-Path $GameManagedPath $_ }
