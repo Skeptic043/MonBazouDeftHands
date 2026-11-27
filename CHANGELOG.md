@@ -2,9 +2,7 @@
 
 ## 1.0.1
 
-- Renamed from Easy Rotate to Deft Hands with Keevi's blessing
-- Remove the old `BepInEx/plugins/EasyRotate` folder when updating, since both would load together
-- Settings now live in `com.skeptic043.monbazou.defthands.cfg` and start from defaults
+- Fixed the release ZIP so mod managers and other extractors create its folders correctly
 
 ## 1.0.0
 

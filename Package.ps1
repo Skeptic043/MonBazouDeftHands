@@ -2,7 +2,7 @@ param(
     [string]$OutputPath
 )
 $ErrorActionPreference = 'Stop'
-Add-Type -AssemblyName System.IO.Compression.FileSystem
+Add-Type -AssemblyName System.IO.Compression, System.IO.Compression.FileSystem
 
 $pluginSource = Get-Content -LiteralPath (Join-Path $PSScriptRoot 'src/Plugin.cs') -Raw
 $versionMatch = [regex]::Match($pluginSource, 'public const string PluginVersion = "(\d+\.\d+\.\d+)";')
@@ -49,10 +49,17 @@ foreach ($item in $expected) {
     New-Item -ItemType Directory -Path ([IO.Path]::GetDirectoryName($staged)) -Force | Out-Null
     Copy-Item -LiteralPath (Join-Path $PSScriptRoot $item.Source) -Destination $staged
 }
-[IO.Compression.ZipFile]::CreateFromDirectory($stageDirectory, $temporaryZip, [IO.Compression.CompressionLevel]::Optimal, $false)
+# Name entries explicitly: Windows PowerShell's CreateFromDirectory writes backslash separators,
+# which mod managers and non-Windows extractors treat as part of the file name.
+$archive = [IO.Compression.ZipFile]::Open($temporaryZip, [IO.Compression.ZipArchiveMode]::Create)
+try {
+    foreach ($item in $expected) {
+        [IO.Compression.ZipFileExtensions]::CreateEntryFromFile($archive, (Join-Path $stageDirectory $item.Entry), $item.Entry, [IO.Compression.CompressionLevel]::Optimal) | Out-Null
+    }
+} finally { $archive.Dispose() }
 $archive = [IO.Compression.ZipFile]::OpenRead($temporaryZip)
 try {
-    $actualEntries = @($archive.Entries | ForEach-Object { $_.FullName.Replace('\', '/') } | Sort-Object)
+    $actualEntries = @($archive.Entries | ForEach-Object FullName | Sort-Object)
     $expectedEntries = @($expected | ForEach-Object Entry | Sort-Object)
     if ($actualEntries.Count -ne $expectedEntries.Count -or @(Compare-Object $expectedEntries $actualEntries).Count -ne 0) {
         throw 'ZIP inventory does not exactly match the package allowlist.'

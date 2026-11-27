@@ -39,7 +39,7 @@ No known incompatibilities.
 
 ## Credits
 
-The Mon Bazou version of Keevi's [Deft Hands](https://github.com/KeeviDev/SailwindDeftHands) mod for Sailwind, made with their blessing.
+The Mon Bazou version of Keevi's [Deft Hands](https://github.com/KeeviDev/SailwindDeftHands) mod for Sailwind.
 
 ## AI Use
 
